@@ -1,7 +1,7 @@
 {
   "server" : {
     "bindIP" : "localhost",
-    "bindPort" : "7777"
+    "bindPort" : "9999"
   },
   "logger" : {
     "format" : "dev"
@@ -13,7 +13,7 @@
     "wwwRoot": "public",
     "templates": "butter/templates",
     "publish": "public/view",
-    "publishPrefix": "http://localhost:7777/view"
+    "publishPrefix": "http://localhost:9999/view"
   },
   "environment": {
     "mode": "production"

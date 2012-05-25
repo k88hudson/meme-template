@@ -3,51 +3,85 @@
 <head>
     <title>Basic template</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popcorn.transitions.css">
+    <link rel="stylesheet" href="css/fonts/digital-strip.css">
+    <link rel="stylesheet" href="css/fonts/comic-fx.css">
+    <link rel="stylesheet" href="css/icons/glyphish_custom.css">
+    <!--<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"/>-->
     <script src="https://browserid.org/include.js" type="text/javascript" data-butter-exclude></script>
     <script src="butter/src/butter.js" data-butter-exclude /></script>
-    <script type="text/javascript" src="test.js" data-butter-exclude /></script>
+     <script src="js/butter.template.js" data-butter-exclude /></script>
+    <script type="text/javascript" src="main.js" data-butter-exclude /></script>
+    <script src="js/libs/jquery-1.7.2.min.js"></script>
+    <script src="js/libs/jquery-ui.min.js"></script>
     <style>
-        #main, .content-div {
-          float: left;
+        /* EDITING */
+        *[contenteditable=true] {
+          background: rgba(252,234,56,.7);
+          -webkit-transition: all .3s;
         }
-        .content-div {
-          width: 200px;
-          height: 200px;
-          border: 3px solid #000;
-          margin: 5px;
+        *[contenteditable=true]:focus{ outline: none;}
+
+        .ui-resizable-handle { display: none; }
+        .ui-resizable:hover .ui-resizable-handle {
+          background: #EEE;
+          background-position: -64px -224px;
+          background-image: url(css/icons/ui-icons-blue.png);
         }
-        .container-div {
-          float: left;
-          text-align: center;
-          font-family: helvetica;
-          font-style: bold;
+        .ui-resizable-handle {
+          position: absolute;
+          font-size: 0.1px;
+          display: block;
+          background: #EEE;
+          background-image: url(css/icons/ui-icons.png);
+          background: none;
+          background-position: -64px -224px;
+          }
+        .ui-resizable-se {
+          cursor: se-resize;
+          width: 16px;
+          height: 16px;
+          right: -5px;
+          bottom: -5px;
         }
-        #main {
-          min-width: 300px;
-          min-height: 200px;
+
+         #help {
+          display: none;
+          font-family: sans-serif;
+          padding: 10px;
+          background: #F6DC7E;
+          color: #E1182B;
         }
-        video {
-          position: relative;
-          top: 30px;
+
+         #help ol, #help h3 {
+          margin: .5em 0;
         }
+
     </style>
 </head>
 <body>
-    <div id="video-container">
+    <div id="help" data-butter-exclude>
+      <h3>Images:</h3>
+      <ol>
+        <li>Drag an image plugin from the tray to a target.</li>
+        <li>Click and drag to move it around.</li>
+        <li>Drop an image on it from your desktop.</li>
+        <li>Try resizing it with the handle at the bottom right.</li>
+      </ol>
+      <h3>Zoinks</h3>
+      <ol>
+        <li>Click to drag.</li>
+        <li>Double click to edit text.</li>
+      </ol>
+    </div>
+    <div id="video-container" >
+      <div id="video-overlay" data-butter="target"></div>
       <video id="main" data-butter="media" controls>
         <source src="butter/external/popcorn-js/test/trailer.ogv"></source>
         <source src="butter/external/popcorn-js/test/trailer.mp4"></source>
       </video>
     </div>
-
-    <div class="container-div">
-        <div class="content-div" data-butter="target" id="Area1"></div>
-        <p>Area 1</p>
-    </div>
-    <div class="container-div">
-        <div class="content-div" data-butter="target" id="Area2" data-butter-default ></div>
-        <p>Area 2</p>
-    </div>
-    <div id="target-div"></div>
 </body>
 </html>
