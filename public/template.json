@@ -33,14 +33,19 @@
         "name": "mediaspawner",
         "type": "mediaspawner",
         "path": "js/plugins/mediaspawner/popcorn.mediaspawner.js"
+      },
+      {
+        "name": "meme",
+        "type": "meme",
+        "path": "js/plugins/meme/popcorn.meme.js"
       }
-
     ],
     "defaults": [
       "footnote",
       "image",
       "mediaspawner",
-      "zoink"
+      "zoink",
+      "meme"
     ]
   },
   "icons": {

@@ -17,15 +17,16 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         media.addTrack( "Track" + Math.random() );
 
         var event = track.addTrackEvent({
-          type: "text",
+          type: "meme",
           popcornOptions: {
             start: 0,
             end: 3,
-            text: "test",
-            target: "Area1"
+            text: "WHAT???",
+            target: "video-overlay"
           }
         });
 
+        /*
         track.addTrackEvent({
           type: "zoink",
           popcornOptions: {
@@ -47,6 +48,7 @@ document.addEventListener( "DOMContentLoaded", function( e ){
             target: "video-overlay"
           }
         });
+        */
 
         //Callback
         callback && callback();
@@ -74,6 +76,8 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         trackEvent.update( _popcornOptions );
       });
 
+
+
       function updateFunction(e) {
 
         var trackEvent,
@@ -84,12 +88,22 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         else if (e.type==="trackeventupdated") { trackEvent = e.target; }
         else { trackEvent = e; }
 
+
         trackEvent.popcornTrackEvent = popcorn.getTrackEvent( popcorn.getLastTrackEventId() ); //Store a reference
         _container = trackEvent.popcornTrackEvent._container;
         if (!_container ) { return; }
 
-      
-        if( trackEvent.type === "footnote" || trackEvent.type === "text" ) {
+        if( trackEvent.type === "meme" ) {
+          var textWidth = trackEvent.popcornTrackEvent._container.clientWidth,  
+              textSize = parseInt( trackEvent.popcornOptions.textSize || 80);
+          
+          //if(textWidth <= 550 && textSize < 80) { trackEvent.update({textSize: 80 }); }
+          if(textWidth > 550 && textSize > 40 ) {
+            console.log( textSize );
+            trackEvent.update({textSize: ( textSize - 5 )});
+          }
+          
+
           trackEvent.view.listen("trackeventdoubleclicked", function(){
             t._editing = trackEvent;
             editor.makeContentEditable( _container );
@@ -118,6 +132,12 @@ document.addEventListener( "DOMContentLoaded", function( e ){
 
         }
 
+        else if( trackEvent.type === "mediaspawner" ) {
+          console.log("boom");
+          var mediaSpawner = document.getElementById("mediabrowser");
+          mediaSpawner.style.display = "block";
+        }
+
         else if( trackEvent.type === "image" ) {
           trackEvent.popcornTrackEvent._image.addEventListener("mousedown", function(e){
             e.preventDefault();
@@ -135,6 +155,7 @@ document.addEventListener( "DOMContentLoaded", function( e ){
                 trackEvent.update({top: ui.position.top + "px", left: ui.position.left + "px" });
             }
           });
+
 
           /* Drag and drop DataURI */
           var canvas = document.createElement( "canvas" ),
@@ -186,6 +207,9 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         
           }, false);
 
+        }//if
+        else {
+          //
         }
       }
   
