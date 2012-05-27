@@ -7,7 +7,7 @@
   },
   "ui": {
     "trackEventHighlight": "click",
-    "title": "Butter <sup style=\"text-decoration: underline;\">0.3</sup>"
+    "title": "mozilla Popcorn Meme Generator"
   },
   "plugin": {
     "plugins": [
@@ -38,6 +38,16 @@
         "name": "meme",
         "type": "meme",
         "path": "js/plugins/meme/popcorn.meme.js"
+      },
+      {
+        "name": "looper",
+        "type": "looper",
+        "path": "js/plugins/loop/popcorn.loop.js"
+      },
+      {
+        "name": "soundOn",
+        "type": "soundOn",
+        "path": "js/plugins/soundOn/popcorn.soundOn.js"
       }
     ],
     "defaults": [
@@ -45,7 +55,9 @@
       "image",
       "mediaspawner",
       "zoink",
-      "meme"
+      "meme",
+      "looper",
+      "soundOn"
     ]
   },
   "icons": {

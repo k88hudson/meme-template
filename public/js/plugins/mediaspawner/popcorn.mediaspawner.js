@@ -99,7 +99,8 @@
 
       // Check if mediaSource is passed and mediaType is NOT audio/video
       if ( !options.source ) {
-        Popcorn.error( "Error. Source must be specified." );
+        options.source = " ";
+        //Popcorn.error( "Error. Source must be specified." );
       }
 
       // If it's an HTML Video/Audio check if they passed a correct type

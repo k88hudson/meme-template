@@ -61,22 +61,29 @@
     _setup: function( options ) {
 
       var target = document.getElementById( options.target ),
-          maxSize = "60px",
-          minSize = "36px";
+          textSize = options.textSize;
 
-      if( !options.textSize ) {
-        options.textSize = 80;
+      if( !textSize && options.target === "video-overlay-top" ) {
+        textSize = 80;
+      }
+      if( !textSize && options.target === "video-overlay-bottom" ) {
+        textSize = 60;
       }
 
       options._container = document.createElement( "div" );
       options._container.classList.add("meme");
       options._container.innerHTML  = options.text;
-      options._container.style.fontSize = options.textSize + "px";
+      options._container.style.fontSize = textSize + "px";
+
 
       if ( !target && Popcorn.plugin.debug ) {
         throw new Error( "target container doesn't exist" );
       }
       target && target.appendChild( options._container );
+      while( options._container.clientHeight > 150 ) {
+        textSize = textSize - 5;
+        options._container.style.fontSize = textSize + "px";
+      }
       options._container.style.display = "none";
 
     

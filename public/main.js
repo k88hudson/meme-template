@@ -12,17 +12,27 @@ document.addEventListener( "DOMContentLoaded", function( e ){
     // You should create tracks & starting track events here.
 
       //Add tracks
-       var track = media.addTrack( "Track1" );
-        media.addTrack( "Track" + Math.random() );
-        media.addTrack( "Track" + Math.random() );
+      var track = media.addTrack( "Track1" ),
+      track2 = media.addTrack( "Track2" ),
+      track3 = media.addTrack("Track3");
 
-        var event = track.addTrackEvent({
+        track.addTrackEvent({
           type: "meme",
           popcornOptions: {
             start: 0,
             end: 3,
             text: "WHAT???",
-            target: "video-overlay"
+            target: "video-overlay-top"
+          }
+        });
+
+        track2.addTrackEvent({
+          type: "meme",
+          popcornOptions: {
+            start: 0,
+            end: 3,
+            text: "blamo",
+            target: "video-overlay-bottom"
           }
         });
 
@@ -88,21 +98,11 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         else if (e.type==="trackeventupdated") { trackEvent = e.target; }
         else { trackEvent = e; }
 
-
         trackEvent.popcornTrackEvent = popcorn.getTrackEvent( popcorn.getLastTrackEventId() ); //Store a reference
         _container = trackEvent.popcornTrackEvent._container;
         if (!_container ) { return; }
 
         if( trackEvent.type === "meme" ) {
-          var textWidth = trackEvent.popcornTrackEvent._container.clientWidth,  
-              textSize = parseInt( trackEvent.popcornOptions.textSize || 80);
-          
-          //if(textWidth <= 550 && textSize < 80) { trackEvent.update({textSize: 80 }); }
-          if(textWidth > 550 && textSize > 40 ) {
-            console.log( textSize );
-            trackEvent.update({textSize: ( textSize - 5 )});
-          }
-          
 
           trackEvent.view.listen("trackeventdoubleclicked", function(){
             t._editing = trackEvent;
@@ -134,8 +134,6 @@ document.addEventListener( "DOMContentLoaded", function( e ){
 
         else if( trackEvent.type === "mediaspawner" ) {
           console.log("boom");
-          var mediaSpawner = document.getElementById("mediabrowser");
-          mediaSpawner.style.display = "block";
         }
 
         else if( trackEvent.type === "image" ) {
