@@ -1,0 +1,67 @@
+// PLUGIN: mediaspawner
+/**
+  * mediaspawner Popcorn Plugin.
+  * Adds Video/Audio to the page using Popcorns players
+  * Start is the time that you want this plug-in to execute
+  * End is the time that you want this plug-in to stop executing
+  *
+  * @param {Object} options
+  *
+  * Example:
+    var p = Popcorn('#video')
+      .mediaspawner( {
+        source: "http://www.youtube.com/watch?v=bUB1L3zGVvc",
+        target: "mediaspawnerdiv",
+        start: 1,
+        end: 10,
+        caption: "This is a test. We are assuming conrol. We are assuming control."
+      })
+  *
+  */
+(function ( Popcorn, global ) {
+ 
+  Popcorn.plugin( "mediaspawner", {
+    manifest: {
+      about: {
+        name: "Popcorn Media Spawner Plugin",
+        version: "0.1",
+        author: "Matthew Schranz, @mjschranz",
+        website: "mschranz.wordpress.com"
+      },
+      options: {
+        disable: {
+          elem: "input",
+          type: "checkbox",
+          label: "Disable?"
+        },
+        start: {
+          elem: "input",
+          type: "number",
+          label: "Start"
+        },
+        end: {
+          elem: "input",
+          type: "number",
+          label: "End"
+        },
+      }
+    },
+    _setup: function( options ) {
+      function theLoop(){
+        var time = this.currentTime():
+        if(time < options.start || time > options.end) {
+          this.currentTime( options.start );
+        }
+      }
+    },
+    start: function( event, options ) {
+     //
+    },
+    end: function( event, options ) {
+   //
+    },
+    _teardown: function( options ) {
+      
+    }
+  });
+})( Popcorn, this );
