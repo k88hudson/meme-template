@@ -51,10 +51,6 @@
       }
     ],
     "defaults": [
-      "footnote",
-      "image",
-      "mediaspawner",
-      "zoink",
       "meme",
       "looper",
       "soundOn"
