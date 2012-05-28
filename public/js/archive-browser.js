@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     $("#mediabrowserbtn").click(function(){ $("#mediabrowser").show(); });
     $("#search-btn").click(function(){
-    //TEMPLATE PARTS
+    
+    //Template parts
       var url='http://archive.org/details/tv?output=json&callback=mainTemplate&pop=1&rows=9&q='+$('#search-field').val();
       $("#searchresults").addClass("active");
 
@@ -20,10 +21,13 @@ document.addEventListener("DOMContentLoaded", function(){
       });
     });
 
-    $("#top-bar .close-me").click(function(e){
-      e.preventDefault();
+    //Hide the widget if the background is clicked
+    $('.widget').click(function(e){ e.stopPropagation(); });
+    $("#mediabrowser").click(function(e){
       $("#mediabrowser").hide();
     });
+
+
 
   }); //ajax
 

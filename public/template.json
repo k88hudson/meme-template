@@ -1,5 +1,5 @@
 {
-  "name": "default-butter-test",
+  "name": "meme-template",
   "snapshotHTMLOnReady": true,
   "editor": {
     "default": "butter/editors/default-editor.html",
