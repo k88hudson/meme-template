@@ -1,0 +1,66 @@
+
+  <div class="widget">
+    <div id="top-bar" class="widget-header label-text">
+      <p>
+        <i class=".icon icon-archive"></i>
+        <span>Moving images from archive.org</span>
+      </p>
+    </div>
+    <div id="tabs">
+      <div id="searchresults" class="widget-body"></div>
+      <div id="details" class="widget-body"></div>
+    </div>
+    <div id="search" class="widget-search">
+      <input id="search-field" type="search" value="Search...">
+      <div class="channels clearfix">
+        <label><input type="checkbox" class="chan" value="channel:KGO OR channel:WMAR"> ABC</label>
+        <label><input type="checkbox" class="chan" value="channel:KPIX OR channel:WJZ OR channel:WUSA"> CBS</label>
+        <label><input type="checkbox" class="chan" value="channel:CNNW OR channel:CNN"> CNN</label>
+        <label><input type="checkbox" class="chan" value="channel:CSPAN OR channel:CSPAN2 OR channel:CSPAN3 OR channel:CSPN2"> CSPAN</label>
+        <label><input type="checkbox" class="chan" value="channel:COMW"> Comedy Central</label>
+        <label><input type="checkbox" class="chan" value="channel:KTVU OR channel:WBFF"> FOX</label>
+        <label><input type="checkbox" class="chan" value="channel:FOXNEWSW OR channel:FOXNEWS"> FOX News</label>
+        <label><input type="checkbox" class="chan" value="channel:MSNBCW OR channel:MSNBC"> MSNBC</label>
+        <label><input type="checkbox" class="chan" value="channel:KNTV"> NBC</label>
+        <label><input type="checkbox" class="chan" value="channel:KCSM OR channel:KQED OR channel:KRCB OR channel:KTEH OR channel:WMPT"> PBS</label>
+      </div>
+       <button id="search-btn" class="btn dark btn-filetypes">Search!</button>
+    </div>
+  </div>
+
+  <div id="searchresults-template" class="mustache-template">
+  {{#data}}
+    <div id="box-{{index}}" class="box">
+      <a href="#details-{{index}}" class="video-preview show-details"><img src="{{videoPoster}}" /></a>
+      <p class="video-title">{{videoTitle}}</p>
+      <p class="video-time">{{videoTime}}</p>
+      <p class="video-description">{{videoDesc}}</p>
+      <p class="date-uploaded">{{dateUploaded}}</p>
+    </div>
+  {{/data}}
+  </div>
+
+  <div id="details-template" class="mustache-template">
+    <div id="details-{{index}}" class="widget-details">
+     <div class="full"><button class="close-me"><i class="icon icon-circlex"></i></button></div>
+      <div class="third">
+        <div class="video-preview">
+          <a href="{{videoPreview}}" class="video-preview"><img src="{{videoPoster}}" /></a>
+        </div>
+        <p class="video-time">{{videoTime}}</p>
+      </div>
+      <div class="twothirds">
+        <h3>{{videoTitle}}</h3>
+        <div class="video-description">{{videoDesc}}</div>
+        <div class="file-types">
+            <button class="btn dark btn-filetypes" href="{{videoPreview}}">Add me</button>
+        </div>
+      </div>
+      <div class="tags">
+          <h4>Tags</h4>
+          {{#tags}}
+            <button class="btn btn-tags">{{name}}</button>
+          {{/tags}}
+        </div>
+    </div>
+  </div>

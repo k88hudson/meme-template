@@ -185,6 +185,9 @@ Butter.Template = function() {
                 t.debug && console.log( t.name + ": Changed " + JSON.stringify(data).replace(/\</g, "&lt;").replace(/\>/g, "&gt;") );
               }
             }
+            else if (e.keyCode === 8) {
+              return false; //Prevent accidentally deleting track events
+            }
           }
 
           element.setAttribute("contenteditable", true);

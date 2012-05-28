@@ -189,6 +189,8 @@ body {
 }
 
 /* WIDGET */
+#top-bar { position: relative; }
+#top-bar .close-me { background: none; border: none; position: absolute; right: 0; top: 5px; }
 .widget {
   font-family: "Open Sans";
   width: 400px;
@@ -381,7 +383,7 @@ body {
 
 .label-text {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: .05em;
 }
 
