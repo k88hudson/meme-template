@@ -50,6 +50,11 @@
             type: "text",
             label: "Text"
           },
+          top: {
+            elem: "input",
+            type: "text",
+            label: "Top"
+          },
           textSize: {
             elem: "input",
             type: "text",
@@ -72,6 +77,7 @@
 
       options._container = document.createElement( "div" );
       options._container.classList.add("meme");
+      options.top && ( options._container.style.top = options.top + "px" );
       options._container.innerHTML  = options.text;
       options._container.style.fontSize = textSize + "px";
 
