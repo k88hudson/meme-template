@@ -5,6 +5,13 @@
     "default": "butter/editors/default-editor.html",
     "googlemap": "js/plugins/googlemap/googlemap-editor.html"
   },
+  "server" : {
+    "bindIP" : "http://katehudson.ca",
+    "bindPort" : "80"
+  },
+  "session" : {
+    "secret": "thisisareallyreallylongsecrettoencryptcookies"
+  },
   "ui": {
     "trackEventHighlight": "click",
     "title": "mozilla Popcorn Meme Generator"
