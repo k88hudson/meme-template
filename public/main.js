@@ -19,9 +19,10 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         track.addTrackEvent({
           type: "meme",
           popcornOptions: {
-            start: 0,
-            end: 3,
-            text: "WHAT???",
+            start: 2,
+            end: 4,
+            top: "-35",
+            text: "Success",
             target: "video-overlay-top"
           }
         });
@@ -29,10 +30,19 @@ document.addEventListener( "DOMContentLoaded", function( e ){
         track2.addTrackEvent({
           type: "meme",
           popcornOptions: {
-            start: 0,
-            end: 3,
-            text: "blamo",
+            start: 2,
+            end: 4,
+            top: "-30",
+            text: "video meme acheived",
             target: "video-overlay-bottom"
+          }
+        });
+
+        track3.addTrackEvent({
+          type: "looper",
+          popcornOptions: {
+            start: 2.23,
+            end: 3.23
           }
         });
 
